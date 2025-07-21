@@ -23,7 +23,6 @@ const PORT = process.env.PORT || 4000;
 database.connect();
 
 //middlewares
-app.use(express.json());
 app.use(cookieParser());
 
 // app.use(
@@ -41,20 +40,20 @@ const allowedOrigins = [
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, origin); // Allow specific origin
+      callback(null, origin); // ✅ allow exact origin
     } else {
-      console.log("❌ Blocked by CORS:", origin);
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true,
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, // ✅ allow cookies and headers
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
+
+app.use(express.json());
 
 
 app.use(
