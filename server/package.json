@@ -4,7 +4,7 @@
   "description": "studynotion-backend",
   "main": "index.js",
   "scripts": {
-    "start": "index.js",
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "keywords": [],
@@ -25,8 +25,10 @@
     "mongoose": "^7.1.1",
     "node-schedule": "^2.1.1",
     "nodemailer": "^6.9.1",
-    "nodemon": "^2.0.22",
     "otp-generator": "^4.0.1",
     "razorpay": "^2.8.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
